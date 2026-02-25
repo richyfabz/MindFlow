@@ -2,9 +2,10 @@ import React from "react";
 import Sidebar from "./sidebar";
 
 function ChatInterface() {
-    return <div className="flex h-screen">
+    return (<div className="flex h-screen">
         <Sidebar />
-        </div>;
+        </div>
+);
 }
 
 export default ChatInterface;
