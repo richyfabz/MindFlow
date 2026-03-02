@@ -4,34 +4,28 @@ const ThemeContext = createContext();
 
 export const useTheme = () => {
   const context = useContext(ThemeContext);
-
-  if (!context) {
-    throw new Error("useTheme must be used within ThemeProvider");
-  }
-
+  if (!context) throw new Error("useTheme must be used within ThemeProvider");
   return context;
 };
 
 export function ThemeProvider({ children }) {
   const [isDarkMode, setIsDarkMode] = useState(() => {
     const saved = localStorage.getItem("theme");
-    return saved ? saved === "dark" : true;
+    return saved ? saved === "dark" : true; // default to dark like ChatGPT
   });
 
   useEffect(() => {
-  const root = document.documentElement;
-
-  if (isDarkMode) {
-    root.classList.add("dark");
-    root.classList.remove("light");
-    localStorage.setItem("theme", "dark");
-  } else {
-    root.classList.remove("dark");
-    root.classList.add("light");
-    localStorage.setItem("theme", "light");
-  }
-}, [isDarkMode]);
-
+    const root = document.documentElement;
+    if (isDarkMode) {
+      root.classList.add("dark");
+      root.classList.remove("light");
+      localStorage.setItem("theme", "dark");
+    } else {
+      root.classList.remove("dark");
+      root.classList.add("light");
+      localStorage.setItem("theme", "light");
+    }
+  }, [isDarkMode]);
 
   const toggleTheme = () => setIsDarkMode(prev => !prev);
 
