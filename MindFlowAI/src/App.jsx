@@ -2,7 +2,7 @@ import { useState } from "react";
 import { ThemeProvider } from "./context/themeContext";
 import Sidebar from "./components/sidebar";
 import ChatInterface from "./components/chatinterface";
-
+//chat interface and message list are now combined into one component for better UX
 function App() {
   const [chats, setChats] = useState([
     { id: 1, title: "New Chat", messages: [] }
