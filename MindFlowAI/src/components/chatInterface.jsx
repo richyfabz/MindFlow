@@ -28,7 +28,9 @@ function ChatInterface({ chat, onUpdateChat }) {
   }, [input]);
 
   const callAPI = async (messageHistory) => {
-    const response = await fetch("http://localhost:3001/api/chat", {
+    
+    const response = await fetch("https://mindflowai-z9ht.onrender.com/api/chat",
+         {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ messages: [SYSTEM_PROMPT, ...messageHistory] }),
